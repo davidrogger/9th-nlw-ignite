@@ -1,3 +1,3 @@
-# #9 Edição Next Level Week Rockeset
+# #9 Edição, Next Level Week Rocketset
 
 ## Ignite version
