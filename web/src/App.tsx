@@ -1,5 +1,10 @@
+import './styles/main.css';
+
 function App() {
-  return <h1>Ignite</h1>
+  return (
+    <div>
+    </div>
+  );
 }
 
 export default App
