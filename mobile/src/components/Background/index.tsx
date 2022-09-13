@@ -11,10 +11,11 @@ interface Props {
 export function Background({ children }:Props) {
   return (
     <ImageBackground
-    source={backgroundImg}
-    defaultSource={backgroundImg} // deixando explicito o padrão para carregamento mais rápido do fundo
-    style={styles.container}>
-
+      source={backgroundImg}
+      defaultSource={backgroundImg} // deixando explicito o padrão para carregamento mais rápido do fundo
+      style={styles.container}
+    >
+      {children}
     </ImageBackground>
   );
 }
