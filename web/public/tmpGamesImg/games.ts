@@ -32,7 +32,7 @@ const games:gamesData[] = [
   },
   {
     id: 6,
-    title: 'World WarCraft Showlands',
+    title: 'World of WarCraft',
     path: '/tmpGamesImg/game-06.png'
   },
 ];
