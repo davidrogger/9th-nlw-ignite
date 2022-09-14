@@ -10,14 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Game {
+model games {
   id        String @id @default(uuid())
   title     String
   bannerUrl String
-  Ad        Ad[]
+  ads       ads[]
 }
 
-model Ad {
+model ads {
   id              String   @id @default(uuid())
   gameId          String
   name            String
@@ -29,5 +29,5 @@ model Ad {
   useVoiceChannel Boolean
   createdAt       DateTime @default(now())
 
-  game Game @relation(fields: [gameId], references: [id])
+  game games @relation(fields: [gameId], references: [id])
 }

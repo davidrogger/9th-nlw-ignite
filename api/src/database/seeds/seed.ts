@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 // https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#create
 
 async function main() {
-  let games: Prisma.GameCreateInput[] = [
+  let games: Prisma.gamesCreateInput[] = [
     {
       title: 'Lost Ark',
       bannerUrl: 'https://static-cdn.jtvnw.net/ttv-boxart/490100-188x250.jpg'
@@ -33,7 +33,7 @@ async function main() {
 
   await Promise.all(
     games.map(async (game) => {
-      await prisma.game.create({
+      await prisma.games.create({
         data: game,
       })
     })
