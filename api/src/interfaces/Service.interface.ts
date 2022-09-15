@@ -1,5 +1,13 @@
-interface IService<T> {
+interface IServiceGetAll<T> {
   getAll():Promise<T[]>;
 }
 
-export default IService;
+interface IServiceGetById<T> {
+  getById(id:string):Promise<T[]>;
+}
+
+export default IServiceGetAll;
+
+export {
+  IServiceGetById
+};

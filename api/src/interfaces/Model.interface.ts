@@ -1,5 +1,12 @@
-interface IModel<T> {
+interface IModelGetAll<T> {
   getAll():Promise<T[]>;
 }
 
-export default IModel;
+interface IModelGetById<T> {
+  getById(id:string):Promise<T[] | null>;
+}
+
+export default IModelGetAll;
+export {
+  IModelGetById,
+}
