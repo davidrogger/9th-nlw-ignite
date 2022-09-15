@@ -1,6 +1,8 @@
 interface IAdDB {
-  id:string;
+  id?:string;
+  gameId: string,
   name:string;
+  discord?: string;
   weekDays:string;
   useVoiceChannel:boolean;
   yearsPlaying:string;
@@ -9,8 +11,10 @@ interface IAdDB {
 }
 
 interface IAdConverted {
-  id:string;
+  id?:string;
+  gameId: string;
   name:string;
+  discord?: string;
   weekDays:string[];
   useVoiceChannel:boolean;
   yearsPlaying:string;

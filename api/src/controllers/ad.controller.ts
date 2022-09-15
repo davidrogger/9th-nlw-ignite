@@ -18,6 +18,13 @@ class AdController {
     const discord = await this.service.getDiscordByAdId(adId);
     res.status(200).json(discord);
   }
+
+  public async create(req: Request, res:Response) {
+    const gameId = req.params.id;
+    const payload = { gameId, ...req.body };
+    const newAd = await this.service.createAds(payload);
+    res.status(201).json(newAd);
+  }
 }
 
 export default AdController;

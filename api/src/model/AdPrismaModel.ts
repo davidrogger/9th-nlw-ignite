@@ -1,16 +1,17 @@
 import { PrismaClient } from "@prisma/client";
 import IAdDB from "../interfaces/Ad.interface";
-import { IModelGetById } from "../interfaces/Model.interface";
+import { IModelADs } from "../interfaces/Model.interface";
 
-class AdPrismaModel implements IModelGetById<IAdDB> {
+class AdPrismaModel implements IModelADs<IAdDB> {
   constructor(private model:PrismaClient) {}
   public async getById(gameId:string):Promise<IAdDB[]> {
-    return this.model.ads.findMany({
+    const ads = await this.model.ads.findMany({
       where: {
         gameId
       },
       select: {
         id: true,
+        gameId: true,
         name: true,
         weekDays: true,
         useVoiceChannel: true,
@@ -23,6 +24,7 @@ class AdPrismaModel implements IModelGetById<IAdDB> {
       }
     });
     
+    return ads;
   }
 
   public async getDiscordByAdId(adId:string):Promise<{ discord:string }> {
@@ -38,6 +40,16 @@ class AdPrismaModel implements IModelGetById<IAdDB> {
     return ad
   }
   
+  public async createAD(payload:IAdDB): Promise<IAdDB> {
+    return this.model.ads.create({
+      data: {
+        ...payload,
+        discord: payload.discord || 'temporary',
+      }
+    });
+
+  }
+
 }
 
 export default AdPrismaModel;

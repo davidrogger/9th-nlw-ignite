@@ -19,6 +19,7 @@ const adController = new AdController(adService);
 
 
 route.get('/:id/ads', (req, res) => adController.getById(req, res));
+route.post('/:id/ads', (req, res) => adController.create(req, res));
 route.get('/', (req, res) => gameController.getAll(req, res));
 
 export default route;
