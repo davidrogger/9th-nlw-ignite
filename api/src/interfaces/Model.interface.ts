@@ -4,6 +4,7 @@ interface IModelGetAll<T> {
 
 interface IModelGetById<T> {
   getById(id:string):Promise<T[] | null>;
+  getDiscordByAdId(id:string):Promise<{discord:string}>;
 }
 
 export default IModelGetAll;

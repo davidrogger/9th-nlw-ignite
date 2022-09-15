@@ -13,8 +13,10 @@ class AdController {
     res.status(StatusCodes.OK).json(gameAds);
   }
 
-  public async getDiscordByAdId() {
-    
+  public async getDiscordByAdId(req:Request, res:Response) {
+    const adId = req.params.id;
+    const discord = await this.service.getDiscordByAdId(adId);
+    res.status(200).json(discord);
   }
 }
 

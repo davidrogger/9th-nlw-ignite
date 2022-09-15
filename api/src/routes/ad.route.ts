@@ -10,6 +10,6 @@ const adWithPrisma = new AdPrismaModel(prisma);
 const adService = new AdService(adWithPrisma);
 const adController = new AdController(adService);
 
-route.get('/:id/discord', (req, res) => adController.getById(req, res));
+route.get('/:id/discord', (req, res) => adController.getDiscordByAdId(req, res));
 
 export default route;

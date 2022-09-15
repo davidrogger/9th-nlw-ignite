@@ -4,6 +4,7 @@ interface IServiceGetAll<T> {
 
 interface IServiceGetById<T> {
   getById(id:string):Promise<T[]>;
+  getDiscordByAdId(id:string):Promise<{discord:string}>;
 }
 
 export default IServiceGetAll;

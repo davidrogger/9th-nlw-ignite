@@ -22,8 +22,8 @@ class AdService implements IServiceGetById<IAdConverted> {
     return gameNewFormeted;
   }
 
-  public async getDiscordByAdId() {
-    
+  public async getDiscordByAdId(id:string):Promise<{discord:string}> {
+    return this.model.getDiscordByAdId(id);
   }
 }
 

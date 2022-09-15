@@ -24,6 +24,19 @@ class AdPrismaModel implements IModelGetById<IAdDB> {
     });
     
   }
+
+  public async getDiscordByAdId(adId:string):Promise<{ discord:string }> {
+    const ad = await this.model.ads.findUnique(
+      {
+        where: { id: adId },
+        select: { discord: true },
+      },
+    );
+    
+    if (!ad) throw new Error('NotFound');
+
+    return ad
+  }
   
 }
 
