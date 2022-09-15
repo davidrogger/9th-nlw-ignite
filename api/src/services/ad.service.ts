@@ -2,6 +2,7 @@ import IAdDB, { IAdConverted } from "../interfaces/Ad.interface";
 import { IModelADs } from "../interfaces/Model.interface";
 import { IServiceGetById } from "../interfaces/Service.interface";
 import convertHourStringToMinutes from "../utils/convertHourStringToMinutes";
+import convertMinutesToHoursString from "../utils/convertMinutesToHoursString";
 
 class AdService implements IServiceGetById<IAdConverted> {
   constructor(private model:IModelADs<IAdDB>) {}
@@ -15,8 +16,8 @@ class AdService implements IServiceGetById<IAdConverted> {
       return {
         ...game,
         weekDays: game.weekDays.split(','),
-        hourStart: game.hourStart.toString(),
-        hourEnd: game.hourEnd.toString(),
+        hourStart: convertMinutesToHoursString(game.hourStart),
+        hourEnd: convertMinutesToHoursString(game.hourEnd),
       };
     });
 
