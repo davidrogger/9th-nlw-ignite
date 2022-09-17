@@ -1,7 +1,6 @@
 import './styles/main.css';
 import logoImg from './assets/nlw-logo.svg';
 import GamesDisplay from './components/GamesDisplay';
-import { MagnifyingGlassPlus } from 'phosphor-react';
 import AdBanner from './components/AdBanner';
 
 function App() {
