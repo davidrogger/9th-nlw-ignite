@@ -18,7 +18,7 @@ export function SelectGame() {
   }, []);
 
   return (
-    <Select.Root>
+    <Select.Root name="game">
               <Select.Trigger
                 className="bg-zinc-900 py-3 px-4 rounded text-sm flex items-center justify-between text-zinc-500"
               >
@@ -36,6 +36,7 @@ export function SelectGame() {
               <Select.Content
                 className="bg-zinc-900 py-3 px-4 rounded text-sm flex overflow-hidden"
               >
+                <Select.Viewport>
                 { games.map(({ title }, index) => {
                   return (
                     <Select.Item
@@ -47,7 +48,7 @@ export function SelectGame() {
                 </Select.Item>
                   );
                 }) }
-
+                </Select.Viewport>
               </Select.Content>
             </Select.Root>
   );

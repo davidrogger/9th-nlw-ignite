@@ -1,11 +1,24 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import { GameController } from 'phosphor-react';
-import { weekData } from '../utils/weekFormat';
-import InputModel from './InputModel';
+import { Check, GameController } from 'phosphor-react';
 import { SelectGame } from './SelectGame';
+import InputModel from './InputModel';
 import WeekButtom from './WeekButtom';
 
+import * as Dialog from '@radix-ui/react-dialog';
+import * as Checkbox from '@radix-ui/react-checkbox';
+import { FormEvent, useState } from 'react';
+
 export default function AdModal() {
+  const [voiceChannel, setVoiceChannel] = useState(false);
+  const [weekList, setWeekList] = useState<string[]>([]);
+
+  function handleCreateAd(event: FormEvent) {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement)
+    const data = Object.fromEntries(formData);
+    console.log(weekList)
+    console.log(data);
+  }
+
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="bg-black/75 inset-0 fixed" />
@@ -15,7 +28,10 @@ export default function AdModal() {
       >
         <Dialog.Title className="text-3xl font-black">Publique um anúncio</Dialog.Title>
 
-        <form className="mt-8 flex flex-col gap-4">
+        <form
+          className="mt-8 flex flex-col gap-4"
+          onSubmit={handleCreateAd}
+        >
           <div className="flex flex-col gap-2">
             <label className="font-semibold"> Qual o game? </label>
 
@@ -45,7 +61,10 @@ export default function AdModal() {
             <div className="flex flex-col gap-2">
               <label htmlFor="weekDays">Quando costuma jogar?</label>
 
-                <WeekButtom />
+                <WeekButtom 
+                  weekList={ weekList }
+                  setWeekList={ setWeekList }
+                />
 
             </div>
 
@@ -58,9 +77,20 @@ export default function AdModal() {
             </div>
           </div>
 
-          <div className="mt-4 flex gap-2 text-sm">
-            <InputModel id="voiceChat" type="checkbox" />
-            <label htmlFor="voiceChat">Costumo me conectar ao chat de voz</label>
+          <div className="mt-4 flex gap-2 text-sm items-center">
+            <Checkbox.Root
+              checked={voiceChannel}
+              onCheckedChange={() => setVoiceChannel(!voiceChannel)}
+              id="voiceChat"
+              className="bg-zinc-900 w-6 h-6 flex items-center justify-center rounded"
+            >
+              <Checkbox.Indicator>
+                <Check 
+                  className="w-4 h4 text-emerald-400"
+                />
+              </Checkbox.Indicator>
+            </Checkbox.Root>
+              <label htmlFor="voiceChat">Costumo me conectar ao chat de voz</label>
           </div>
 
           <footer className="mt 4 flex justify-end gap-4">
